@@ -235,7 +235,7 @@ const LoadingScreen = ({ onComplete }) => {
       initial={{ opacity: 0, x: '100vw' }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: '100vw' }}
-      transition={{ duration: 0.25, ease: "linear" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       style={{ willChange: "transform, opacity" }}
     >
       {/* Background Elements for Continuity */}
@@ -332,7 +332,7 @@ const App = () => {
   // Main Render with AnimatePresence for Transitions
   return (
     <div className="relative min-h-screen bg-deep-gray font-sans selection:bg-neon selection:text-black overflow-hidden">
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {view === 'landing' && (
           <LandingPage key="landing" onStart={handleCommandSuccess} />
         )}
