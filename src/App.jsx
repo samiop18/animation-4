@@ -232,10 +232,11 @@ const LoadingScreen = ({ onComplete }) => {
     <motion.div
       key="loader"
       className="fixed inset-0 z-[60] bg-deep-gray flex items-center justify-center overflow-hidden"
-      initial={{ opacity: 0, x: '100vw', rotateY: 45 }}
-      animate={{ opacity: 1, x: 0, rotateY: 0 }}
-      exit={{ opacity: 0, x: '100vw', rotateY: -45, scale: 0.8 }}
-      transition={{ duration: 0.28, ease: "easeInOut" }}
+      initial={{ opacity: 0, x: '100vw' }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: '100vw' }}
+      transition={{ duration: 0.25, ease: "linear" }}
+      style={{ willChange: "transform, opacity" }}
     >
       {/* Background Elements for Continuity */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neon rounded-full blur-[150px] opacity-20" />
@@ -343,11 +344,11 @@ const App = () => {
         {view === 'form' && (
           <motion.div
             key="form-page"
-            initial={{ opacity: 0, x: '-100vw', rotateY: 45 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 0.28, ease: "backOut" }}
-            className="min-h-screen bg-deep-gray pt-28 pb-20 px-4 flex flex-col items-center relative w-full perspective-[1000px]"
-            style={{ perspective: "1000px" }}
+            initial={{ opacity: 0, x: '-100vw' }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.25, ease: "linear" }}
+            style={{ willChange: "transform, opacity" }}
+            className="min-h-screen bg-deep-gray pt-28 pb-20 px-4 flex flex-col items-center relative w-full"
           >
             <Navbar />
 
