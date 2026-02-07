@@ -14,13 +14,13 @@
     height: 4rem;
     background-size: 300% 300%;
     backdrop-filter: blur(1rem);
-    border-radius: 5rem;
+    border-radius: 0.5rem;
     transition: 0.5s;
     animation: gradient_301 5s ease infinite;
     border: double 4px transparent;
     background-image: linear-gradient(#0a0a0a, #0a0a0a),
         linear-gradient(137.48deg,
-            #00e676 10%,
+            #007f42 10%,
             #004d26 45%,
             #000000 67%,
             #0a0a0a 87%);
@@ -39,7 +39,7 @@
     overflow: hidden;
     transition: 0.5s;
     backdrop-filter: blur(1rem);
-    border-radius: 5rem;
+    border-radius: 0.5rem;
 }
 
 .btn strong {
@@ -130,7 +130,7 @@
 }
 
 #stars::after {
-    background-image: radial-gradient(#ffffff 1px, transparent 1%);
+    background-image: radial-gradient(#00e676 1px, transparent 1%);
     background-size: 50px 50px;
 }
 
@@ -145,7 +145,7 @@
 }
 
 #stars::before {
-    background-image: radial-gradient(#ffffff 1px, transparent 1%);
+    background-image: radial-gradient(#00e676 1px, transparent 1%);
     background-size: 50px 50px;
     opacity: 0.5;
 }

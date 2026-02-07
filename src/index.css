@@ -12,7 +12,8 @@
   textarea {
     cursor: text;
     user-select: text;
-    -webkit-user-select: text; /* Safari fallback */
+    -webkit-user-select: text;
+    /* Safari fallback */
   }
 }
 
@@ -42,4 +43,16 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #111 inset !important;
   -webkit-text-fill-color: white !important;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Ambient Corner Glows */
+.ambient-glow {
+  background-image:
+    radial-gradient(circle at top left, rgba(61, 252, 46, 0.15), transparent 25.9%),
+    radial-gradient(circle at top right, rgba(61, 252, 46, 0.15), transparent 25.9%),
+    radial-gradient(circle at bottom left, rgba(61, 252, 46, 0.15), transparent 25.9%),
+    radial-gradient(circle at bottom right, rgba(61, 252, 46, 0.15), transparent 25.9%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }

@@ -193,10 +193,13 @@ const LandingPage = ({ onStart }) => {
           transition={{ duration: 1 }}
           className="flex flex-col items-center"
         >
-          <img src="/logo.png" alt="Enigma Logo" className="w-32 h-32 md:w-40 md:h-40 drop-shadow-[0_0_25px_rgba(0,230,118,0.4)] animate-pulse" />
-          <h1 className="text-4xl md:text-6xl font-['Montserrat'] font-bold text-white mt-4 tracking-wider" style={{ textShadow: '0 0 20px rgba(61, 252, 46, 0.6)' }}>
+          <img src="/logo.png" alt="Enigma Logo" className="w-32 h-32 md:w-40 md:h-40" />
+          <h1 className="text-[2.07rem] md:text-[3.45rem] font-['Montserrat'] font-bold text-white mt-1 tracking-wider leading-none">
             ENIGMA
           </h1>
+          <h2 className="text-[2.07rem] md:text-[3.45rem] font-geometric font-bold text-neon mt-0 tracking-normal leading-none block">
+            INDUCTION
+          </h2>
         </motion.div>
 
         {/* Action Area */}
@@ -329,10 +332,7 @@ const App = () => {
   return (
     <div className="relative min-h-screen bg-deep-gray font-sans selection:bg-neon selection:text-black overflow-hidden">
       {/* GLOBAL STATIC BACKGROUND BLOBS - Optimized for Performance */}
-      <div className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neon rounded-full blur-[150px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-neon rounded-full blur-[120px]" />
-      </div>
+      <div className="fixed inset-0 w-full h-full pointer-events-none z-0 ambient-glow" />
 
       <AnimatePresence>
         {view === 'landing' && (
