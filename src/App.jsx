@@ -131,7 +131,7 @@ const FloatingIcons = React.memo(() => {
     ];
 
     // Create 15 instances with random positions
-    return Array.from({ length: 15 }).map((_, i) => ({
+    return Array.from({ length: 8 }).map((_, i) => ({
       Icon: icons[i % icons.length],
       id: i,
       x: Math.random() * 100, // vw
@@ -173,19 +173,14 @@ const FloatingIcons = React.memo(() => {
 const LandingPage = ({ onStart }) => {
   return (
     <motion.div
-      className="min-h-screen bg-deep-gray flex flex-col items-center justify-center relative overflow-hidden font-sans z-50"
+      className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-sans z-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, x: '-100vw', filter: "blur(10px)" }}
+      exit={{ opacity: 0, x: '-100vw' }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
+      style={{ willChange: "transform, opacity" }}
     >
       <FloatingIcons />
-
-      {/* Replicated Form Background Elements */}
-      <div className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neon rounded-full blur-[150px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-neon rounded-full blur-[120px]" />
-      </div>
 
       <div className="z-10 w-full max-w-3xl px-4 flex flex-col items-center gap-8">
 
@@ -231,16 +226,15 @@ const LoadingScreen = ({ onComplete }) => {
   return (
     <motion.div
       key="loader"
-      className="fixed inset-0 z-[60] bg-deep-gray flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[60] flex items-center justify-center overflow-hidden"
       initial={{ opacity: 0, x: '100vw' }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: '100vw' }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
       style={{ willChange: "transform, opacity" }}
     >
-      {/* Background Elements for Continuity */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neon rounded-full blur-[150px] opacity-20" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-neon rounded-full blur-[120px] opacity-20" />
+      {/* Background Elements for Continuity - Handled Globally */}
+      <div className="hidden" />
 
       <NeonSpeederLoader />
     </motion.div>
@@ -332,6 +326,12 @@ const App = () => {
   // Main Render with AnimatePresence for Transitions
   return (
     <div className="relative min-h-screen bg-deep-gray font-sans selection:bg-neon selection:text-black overflow-hidden">
+      {/* GLOBAL STATIC BACKGROUND BLOBS - Optimized for Performance */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neon rounded-full blur-[150px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-neon rounded-full blur-[120px]" />
+      </div>
+
       <AnimatePresence>
         {view === 'landing' && (
           <LandingPage key="landing" onStart={handleCommandSuccess} />
@@ -348,15 +348,11 @@ const App = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.25, ease: "linear" }}
             style={{ willChange: "transform, opacity" }}
-            className="min-h-screen bg-deep-gray pt-28 pb-20 px-4 flex flex-col items-center relative w-full"
+            className="min-h-screen pt-28 pb-20 px-4 flex flex-col items-center relative w-full"
           >
             <Navbar />
 
-            {/* Background Elements */}
-            <div className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 z-0">
-              <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neon rounded-full blur-[150px]" />
-              <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-neon rounded-full blur-[120px]" />
-            </div>
+            {/* Background Elements - Handled Globally */}
 
             <div className="w-full max-w-[1000px] z-10">
               <div className="text-center mb-14">
